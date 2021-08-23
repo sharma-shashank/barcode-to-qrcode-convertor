@@ -31,6 +31,10 @@ export class AppComponent {
       this.displayQr = true;
     }
   }
+ 
+  onStarted(started) {
+    console.log(started);
+  }
 
   downloadQrCode() {
     this.qrDownloadLink = document.getElementsByTagName('img')[0].src;
