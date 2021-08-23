@@ -118,8 +118,13 @@
               "devServerTarget": "barcode-to-qrcode-convertor:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "barcode-to-qrcode-convertor"
 }
