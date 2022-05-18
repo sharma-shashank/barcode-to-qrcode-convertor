@@ -1,42 +1,35 @@
-import { Component, ViewChild } from '@angular/core';
-import { QRCodeComponent } from 'angularx-qrcode';
-import { BarcodeScannerLivestreamComponent } from "ngx-barcode-scanner";
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  @ViewChild(BarcodeScannerLivestreamComponent, {static: false})
-  barcodeScanner: BarcodeScannerLivestreamComponent;
+export class AppComponent implements OnInit {
+  title = "CodeSandbox";
+  url: string = "https://run.mocky.io/v3/b606e1f7-74f2-429d-93de-32ce62ab7901";
+  response: Array<any> = [];
+  seacrhText: string = "";
 
-  @ViewChild("qrcode", {static : true}) qrcode: QRCodeComponent
-  displayQr: boolean = false;
-  barcodeValue;
-  qrcodename: string;
-  title = 'generated-qrcode';
-  elementType: 'url' | 'canvas' | 'img' = 'url';
-  qrCodeValue: string;
-  qrDownloadLink: string;
-  
-  ngAfterViewInit() {
-    this.barcodeScanner.start();
-  }
- 
-  onValueChanges(result) {
-    this.barcodeValue = result.codeResult.code;
-    if(this.barcodeValue) {
-      this.qrCodeValue = `MISHIPAY|EAN13|${this.barcodeValue}`;
-      this.displayQr = true;
-    }
-  }
- 
-  onStarted(started) {
-    console.log(started);
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getData();
   }
 
-  downloadQrCode() {
-    this.qrDownloadLink = document.getElementsByTagName('img')[0].src;
+  getData() {
+    this.http.get(this.url).subscribe((res: any) => {
+      this.response = res;
+      console.log(this.response);
+    });
+  }
+
+  onKeyDown($event) {
+    console.log($event);
+  }
+
+  clearSearch() {
+    this.seacrhText = '';
   }
 }

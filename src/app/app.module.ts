@@ -3,19 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BarcodeScannerLivestreamModule } from "ngx-barcode-scanner";
-import { QRCodeModule } from 'angularx-qrcode';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SearchFilterPipe } from './search.pipe';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    NgbModule,
-    QRCodeModule,
-    BarcodeScannerLivestreamModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

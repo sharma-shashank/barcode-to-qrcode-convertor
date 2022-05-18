@@ -1,0 +1,31 @@
+.display-result{
+    width: 50%;
+    padding-top: 10%;
+    margin: auto;
+}
+
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+.search-box {
+    position: relative;
+    border-radius: 25px;
+    padding: 5px;
+    width: 100%;
+    border: 2px solid red;
+}
+
+.seacrh-cont{
+    width: 50%;
+    margin: auto;
+    padding: 25px;
+}
+
+.clear-search {
+    top: 150px;
+    position: absolute;
+    right: 370px;
+    width: 12px;
+    cursor: pointer;
+}

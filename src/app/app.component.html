@@ -1,27 +1,8 @@
-  <div class="container">
-    <div class="row align-items-center text-center">
-      <div class="col-sm">
-        <div class="p-3 mb-2 bg-primary text-white">Scan Barcode Here to generate QR-code !</div>
-        <barcode-scanner-livestream
-          type="code_128"
-          (valueChanges)="onValueChanges($event)"
-          (started)="(onStarted)"
-        ></barcode-scanner-livestream>
-      </div>
-      <div class="col-sm text-center bg-success" *ngIf="qrCodeValue">
-        <div class="p-3 mb-2 text-white">Scan or Download the QR-Code</div>
-        <qrcode 
-          #qrcode
-          [elementType]="elementType" 
-          [qrdata]="qrCodeValue"
-          [width]="256" 
-          [errorCorrectionLevel]="'M'"
-        >
-        </qrcode>
-        <p class="font-weight-bold">{{ qrCodeValue ? qrCodeValue : '' }}</p>
-        <a *ngIf="qrCodeValue" [href]="qrDownloadLink" download>
-          <button class="btn btn-primary col-sm" (click)="downloadQrCode()">Download</button>
-        </a>
-      </div>
-    </div>
-  </div>
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="display-result" *ngIf="response && response.length">
+    <input list="userList" type="search" class="search-box" [(ngModel)]="seacrhText" (keydown)="onKeyDown($event)" />
+    <span class="clear-search" (click)="clearSearch()">&times;</span>
+    <datalist id="userList">
+      <option *ngFor="let item of response | filterUser: seacrhText" value="{{item.first_name + ' ' + item.last_name}}, {{item.email}}, {{item.address}}">
+    </datalist>
+</div>
